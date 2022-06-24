@@ -8,3 +8,16 @@ html {
 .button-shadow {
 	box-shadow: 0px 0px 21px -5px rgb(181, 181, 181);
 }
+
+.bg-primary-red {
+	background-color: #FF3366;
+}
+
+.primary-red {
+	color: #FF3366;
+}
+
+.card-container {
+	width: 46%;
+	border-width: 0.5px;
+}

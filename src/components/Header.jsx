@@ -9,7 +9,7 @@ const Header = () => {
 				<p className="text-3xl font-semibold">Virtual Cards</p>
 				<div className="flex items-center text-sm text-blue-600 ml-1.5 px-1 py-0.5 bg-gray-100 rounded-md">
 					<RiVidiconLine />
-					<span className="ml-1.5 ">Learn more</span>
+					<span className="ml-1.5 text-sm">Learn more</span>
 				</div>
 			</div>
 			<div>
