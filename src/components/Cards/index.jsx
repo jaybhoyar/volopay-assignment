@@ -2,7 +2,7 @@ import React from "react";
 import { BiSearch, BiFilter } from "react-icons/bi";
 import List from "./List";
 
-function index() {
+function index({ cards }) {
 	return (
 		<div className="my-5 w-full">
 			<div className="flex flex-reverse justify-end items-center mb-8">
@@ -14,7 +14,7 @@ function index() {
 					</button>
 				</div>
 			</div>
-			<List />
+			<List cards={cards} />
 		</div>
 	);
 }

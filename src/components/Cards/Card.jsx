@@ -2,18 +2,18 @@ import React from "react";
 import { GoPrimitiveDot } from "react-icons/go";
 import { ImFire } from "react-icons/im";
 
-const Card = () => {
+const Card = ({ card }) => {
 	return (
 		<figure class="rounded-md p-6 card-container mb-8 shadow-lg border-slate-50">
 			<div className="flex items-center justify-between">
 				<div className="flex flex-col">
 					<h3 className="text-xl font-medium mb-1.5 leading-none">
-						Mixmax
+						{card.name}
 					</h3>
 					<div className="flex items-center text-sm text-gray-400">
-						<span>Rajesh</span>
+						<span>{card.owner_name}</span>
 						<GoPrimitiveDot className="text-xs mx-1" />
-						<span>Sales Singapore</span>
+						<span>{card.budget_name}</span>
 					</div>
 				</div>
 				<div>
@@ -24,7 +24,7 @@ const Card = () => {
 			</div>
 			<div className="flex items-center justify-between my-4 text-gray-400">
 				<button className="text-xs leading-none uppercase rounded px-2 py-0.5 font-medium border border-gray-400">
-					Burner
+					{card.card_type}
 				</button>
 				<div className="text-sm">
 					Expires: <span className="">1 May, 23</span>
@@ -38,14 +38,14 @@ const Card = () => {
 					<GoPrimitiveDot className="text-xl mx-1 primary-red" />
 					Spent
 				</div>
-				<div>148 SGD</div>
+				<div>{`${card.spent.value} ${card.spent.currency}`}</div>
 			</div>
 			<div className="text-base text-gray-800 flex items-center justify-between">
 				<div className="flex items-center">
 					<GoPrimitiveDot className="text-xl mx-1 text-green-600" />
 					Available to spend
 				</div>
-				<div className="font-medium">30 SGD</div>
+				<div>{`${card.available_to_spend.value} ${card.available_to_spend.currency}`}</div>
 			</div>
 		</figure>
 	);
