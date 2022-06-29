@@ -5,7 +5,7 @@ import Header from "./Common/Header";
 import SubHeader from "./Common/SubHeader";
 import Cards from "./Cards";
 
-const BASE_URL = "http://localhost:3500";
+const BASE_URL = "https://volopayserver.glitch.me";
 
 const App = () => {
 	const [cards, setCards] = useState([]);
