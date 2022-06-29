@@ -10,13 +10,14 @@ const BASE_URL = "https://volopayserver.glitch.me";
 const App = () => {
 	const [cards, setCards] = useState([]);
 	const [filter, setFilter] = useState();
+	const [searchTerm, setSearchTerm] = useState("");
 	let page = 1;
 
 	const fetchCards = async () => {
 		try {
 			const url = filter
-				? `${BASE_URL}/cards?card_type=${filter}&_page=${page}`
-				: `${BASE_URL}/cards?_page=${page}`;
+				? `${BASE_URL}/cards?_card_type=${filter}&_page=${page}`
+				: `${BASE_URL}/cards?q=${searchTerm}&_page=${page}`;
 			const { data } = await axios.get(url);
 			const newCards = data;
 
@@ -50,6 +51,8 @@ const App = () => {
 				<Cards
 					cards={cards}
 					setCards={setCards}
+					searchTerm={searchTerm}
+					setSearchTerm={setSearchTerm}
 					filter={filter}
 					setFilter={setFilter}
 					fetchCards={fetchCards}

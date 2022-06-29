@@ -2,13 +2,21 @@ import React, { useState } from "react";
 import { BiSearch, BiFilter } from "react-icons/bi";
 import List from "./List";
 
-function index({ cards, setCards, filter, setFilter, fetchCards }) {
+function index({
+	cards,
+	searchTerm,
+	setSearchTerm,
+	setCards,
+	filter,
+	setFilter,
+	fetchCards,
+}) {
 	const [showFilterOptions, setShowFilterOptions] = useState(false);
 
 	const handleSubmit = () => {
 		setCards([]);
 		setShowFilterOptions(false);
-		fetchCards(filter);
+		fetchCards();
 	};
 
 	const handleReset = () => {
@@ -23,7 +31,20 @@ function index({ cards, setCards, filter, setFilter, fetchCards }) {
 		<div className="my-5 w-full relative">
 			<div className="flex flex-reverse justify-end items-center mb-8">
 				<div className="flex items-center">
-					<BiSearch className="text-base mr-3" />
+					<div className="relative mr-3">
+						<input
+							type="text"
+							className="py-1 px-3 w-48 rounded text-sm border focus:outline-none text-gray-600 focus:border-gray-600"
+							placeholder="Card name . . ."
+							value={searchTerm}
+							onChange={(e) => setSearchTerm(e.target.value)}
+						/>
+						<BiSearch
+							className="absolute top-2 right-3 text-base"
+							onClick={handleSubmit}
+						/>
+					</div>
+
 					<button
 						onClick={() =>
 							setShowFilterOptions((current) => !current)
