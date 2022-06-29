@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Header from "./Header";
-import SubHeader from "./SubHeader";
+import Header from "./Common/Header";
+import SubHeader from "./Common/SubHeader";
 import Cards from "./Cards";
 
 const BASE_URL = "http://localhost:3500";
 
 const App = () => {
 	const [cards, setCards] = useState([]);
+	const [filter, setFilter] = useState();
 	let page = 1;
 
 	const fetchCards = async () => {
 		try {
-			const { data } = await axios.get(`${BASE_URL}/cards?_page=${page}`);
+			const url = filter
+				? `${BASE_URL}/cards?card_type=${filter}&_page=${page}`
+				: `${BASE_URL}/cards?_page=${page}`;
+			const { data } = await axios.get(url);
 			const newCards = data;
 
 			setCards((oldCards) => [...oldCards, ...newCards]);
@@ -43,7 +47,13 @@ const App = () => {
 			<div className="w-9/12 mx-auto">
 				<Header />
 				<SubHeader />
-				<Cards cards={cards} />
+				<Cards
+					cards={cards}
+					setCards={setCards}
+					filter={filter}
+					setFilter={setFilter}
+					fetchCards={fetchCards}
+				/>
 			</div>
 		</div>
 	);

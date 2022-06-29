@@ -6,7 +6,7 @@ function List({ cards }) {
 		<div className="flex flex-wrap items-center justify-between">
 			{cards.length >= 1 &&
 				cards.map((card, index) => {
-					return <Card index={index} card={card} />;
+					return <Card key={index} card={card} />;
 				})}
 		</div>
 	);
